@@ -1,0 +1,21 @@
+{
+  "name": "DiagramObjectLinkOnEvolve",
+  "description": "Allow you use object link with diagram on evolve",
+  "version": "0.0.1",
+  "main": "DiagramObjectLinkOnEvolve.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nevakee716/DiagramObjectLinkOnEvolve"
+  },
+  "author": "Mathias PFAUWADEL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nevakee716/DiagramObjectLinkOnEvolve/issues"
+  },
+  "homepage": "",
+  "wiki": "https://github.com/nevakee716/DiagramObjectLinkOnEvolve/wiki",
+  "evolve-version": "4.0 - 4.1"
+}
