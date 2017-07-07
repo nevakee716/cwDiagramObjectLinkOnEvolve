@@ -4,7 +4,7 @@
   'use strict';
 
   var DiagramObjectLinkOnEvolveConfig = {
-    behaviour : "dbclick" // drill-down or dbclick  
+    behaviour : "drill-down" // drill-down or dbclick  
   };
 
   var DiagramObjectLinkOnEvolve = {};
