@@ -1,7 +1,7 @@
 {
   "name": "DiagramObjectLinkOnEvolve",
   "description": "Allow you use object link with diagram on evolve",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "DiagramObjectLinkOnEvolve.js",
   "scripts": {
     "test": ""
