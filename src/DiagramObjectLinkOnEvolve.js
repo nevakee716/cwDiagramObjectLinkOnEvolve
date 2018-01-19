@@ -49,7 +49,8 @@
                     openObjectLink();
                 } else if (regionZone.IsExplosionRegion === true) {
                     // Explosion
-                    this.openDiagrams(regionZone.explodedDiagrams);
+                    location.href = cwAPI.createLinkForSingleView(this.currentContext.selectedObject.objectTypeScriptName, this.currentContext.selectedObject);
+                    //this.openDiagrams(regionZone.explodedDiagrams);
                 } else if (regionZone.IsNavigationRegion === true) {
                     // Navigation
                     this.openDiagrams(regionZone.navigationDiagrams);
