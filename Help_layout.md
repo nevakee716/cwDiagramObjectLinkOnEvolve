@@ -1,9 +1,11 @@
 | **Name** | **DiagramObjectLinkOnEvolve** | **Version** | 
 | --- | --- | --- |
-| **Updated by** | Mathias PFAUWADEL | 1.0 | 
+| **Updated by** | Mathias PFAUWADEL | 1.2 | 
 
 ## Patch Notes
 
+* 1.2 : Replace the drillDown by dbClick when clicking on a cross
+* 1.1 : Allow to use hash change
 * 1.0 : 1st version working
 
 ## TBD
@@ -12,7 +14,9 @@
 
 ## Description 
 Allow you use diagram objectLink on evolve. THis only work if the diagram is in the same model
+You can put hask link like that (#/cwtype=index&cwview=index_services_innovants&lang=fr)
 
+On the last version, Replace the drillDown by dbClick when clicking on a cross
 
 ## Options 
 
