@@ -4,8 +4,21 @@
     'use strict';
 
     var DiagramObjectLinkOnEvolveConfig = {
-        behaviour: "dbclick" // drill-down or dbclick  
+        behaviour: "dbclick",
+        accessright : {
+        	process : {
+         		authorizedRoleIDs : [],
+	        	conditionnalAccessFilter : {
+	        		property : "validated",
+	        		operator : "=",
+	        		value : true
+	        	},
+	        	message : "cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"       		
+        	}
+        }
+
     };
+
 
     var DiagramObjectLinkOnEvolve = {};
 
@@ -13,6 +26,29 @@
     DiagramObjectLinkOnEvolve.clickOnCanvas = function(e) {
 
         var that = this;
+        var currentUser = cwApi.currentUser;
+      	function userHasRightToDrillDown() {
+      		var scriptname = that.currentContext.selectedObject.objectTypeScriptName;
+
+      		
+      		if(DiagramObjectLinkOnEvolveConfig.accessright.hasOwnProperty(scriptname)) {
+      			var config = DiagramObjectLinkOnEvolveConfig.accessright[scriptname];
+      			if(config.authorizedRoleIDs) {
+      				for (var i = 0; i < currentUser.RolesId.length; i++) {
+	      				if(config.authorizedRoleIDs.indexOf(currentUser.RolesId[i]) !== -1) return true;
+	      			};     				
+      			}
+
+      			if (cwAPI.customLibs && cwAPI.customLibs.isActionToDo && cwAPI.customLibs.isActionToDo(that.currentContext.selectedObject, config.conditionnalAccessFilter)) {
+      				return true;
+      			} else {
+      				cwApi.cwNotificationManager.addError(config.message);
+      				return false;
+      			}
+      		}
+      		return true;
+      	};
+
 
         function openObjectLink() {
             // Object link
@@ -49,7 +85,10 @@
                     openObjectLink();
                 } else if (regionZone.IsExplosionRegion === true) {
                     // Explosion
-                    location.href = cwAPI.createLinkForSingleView(this.currentContext.selectedObject.objectTypeScriptName, this.currentContext.selectedObject);
+                    if(userHasRightToDrillDown()) {
+                    	location.href = cwAPI.createLinkForSingleView(this.currentContext.selectedObject.objectTypeScriptName, this.currentContext.selectedObject);
+                    }
+               
                     //this.openDiagrams(regionZone.explodedDiagrams);
                 } else if (regionZone.IsNavigationRegion === true) {
                     // Navigation
