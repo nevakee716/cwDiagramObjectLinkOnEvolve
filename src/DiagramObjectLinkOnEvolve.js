@@ -7,14 +7,50 @@
         behaviour: "dbclick",
         accessright : {
         	process : {
-         		authorizedRoleIDs : [],
 	        	conditionnalAccessFilter : {
 	        		property : "validated",
 	        		operator : "=",
-	        		value : true
+	        		value : true,
+                    nonActiveRole : [2,3,4,5]
 	        	},
-	        	message : "cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"       		
-        	}
+	        	message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"       		
+        	},
+            domainemetier : {
+                conditionnalAccessFilter : {
+                    property : "validated",
+                    operator : "=",
+                    value : true,
+                    nonActiveRole : [2,3,4,5]
+                },
+                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
+            },
+            procedure : {
+                conditionnalAccessFilter : {
+                    property : "validated",
+                    operator : "=",
+                    value : true,
+                    nonActiveRole : [2,3,4,5]
+                },
+                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
+            },
+            operation : {
+                conditionnalAccessFilter : {
+                    property : "validated",
+                    operator : "=",
+                    value : true,
+                    nonActiveRole : [2,3,4,5]
+                },
+                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
+            },
+            task : {
+                conditionnalAccessFilter : {
+                    property : "validated",
+                    operator : "=",
+                    value : true,
+                    nonActiveRole : [2,3,4,5]
+                },
+                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
+            },
         }
 
     };
@@ -26,19 +62,11 @@
     DiagramObjectLinkOnEvolve.clickOnCanvas = function(e) {
 
         var that = this;
-        var currentUser = cwApi.currentUser;
       	function userHasRightToDrillDown() {
       		var scriptname = that.currentContext.selectedObject.objectTypeScriptName;
 
-      		
       		if(DiagramObjectLinkOnEvolveConfig.accessright.hasOwnProperty(scriptname)) {
       			var config = DiagramObjectLinkOnEvolveConfig.accessright[scriptname];
-      			if(config.authorizedRoleIDs) {
-      				for (var i = 0; i < currentUser.RolesId.length; i++) {
-	      				if(config.authorizedRoleIDs.indexOf(currentUser.RolesId[i]) !== -1) return true;
-	      			};     				
-      			}
-
       			if (cwAPI.customLibs && cwAPI.customLibs.isActionToDo && cwAPI.customLibs.isActionToDo(that.currentContext.selectedObject, config.conditionnalAccessFilter)) {
       				return true;
       			} else {
