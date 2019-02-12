@@ -6,7 +6,7 @@
     var DiagramObjectLinkOnEvolveConfig = {
         behaviour: "dbclick",
         accessright : {
-        	process : {
+                  objectPage42 : {
 	        	conditionnalAccessFilter : {
 	        		property : "validated",
 	        		operator : "=",
@@ -15,42 +15,7 @@
 	        	},
 	        	message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"       		
         	},
-            domainemetier : {
-                conditionnalAccessFilter : {
-                    property : "validated",
-                    operator : "=",
-                    value : true,
-                    nonActiveRole : [2,3,4,5]
-                },
-                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
-            },
-            procedure : {
-                conditionnalAccessFilter : {
-                    property : "validated",
-                    operator : "=",
-                    value : true,
-                    nonActiveRole : [2,3,4,5]
-                },
-                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
-            },
-            operation : {
-                conditionnalAccessFilter : {
-                    property : "validated",
-                    operator : "=",
-                    value : true,
-                    nonActiveRole : [2,3,4,5]
-                },
-                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
-            },
-            task : {
-                conditionnalAccessFilter : {
-                    property : "validated",
-                    operator : "=",
-                    value : true,
-                    nonActiveRole : [2,3,4,5]
-                },
-                message : "Cet objet n'est pas encore validé, vous n'avez pas encore le droit de le consulter"              
-            },
+  
         }
 
     };
